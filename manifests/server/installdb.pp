@@ -17,15 +17,15 @@ class mysql::server::installdb {
       $_config_file=undef
     }
 
-  if $options['mysqld']['log-error'] {
-    file { $options['mysqld']['log-error']:
-      ensure => present,
-      owner  => $mysqluser,
-      group  => $::mysql::server::mysql_group,
-      mode   => 'u+rw',
-      before => Mysql_datadir[ $datadir ],
+    if $options['mysqld']['log-error'] {
+      file { $options['mysqld']['log-error']:
+        ensure => present,
+        owner  => $mysqluser,
+        group  => $::mysql::server::mysql_group,
+        mode   => 'u+rw',
+        before => Mysql_datadir[ $datadir ],
+      }
     }
-  }
 
     mysql_datadir { $datadir:
       ensure              => 'present',
