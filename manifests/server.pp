@@ -22,6 +22,8 @@ class mysql::server (
   $service_provider        = $mysql::params::server_service_provider,
   $create_root_user        = $mysql::params::create_root_user,
   $create_root_my_cnf      = $mysql::params::create_root_my_cnf,
+  $source                  = undef,
+  $source_md5              = undef,
   $users                   = {},
   $grants                  = {},
   $databases               = {},
@@ -55,6 +57,7 @@ class mysql::server (
   Class['mysql::server::root_password'] -> Mysql::Db <| |>
 
   include '::mysql::server::config'
+  include '::mysql::server::source'
   include '::mysql::server::install'
   include '::mysql::server::binarylog'
   include '::mysql::server::installdb'
@@ -78,6 +81,7 @@ class mysql::server (
 
   Anchor['mysql::server::start'] ->
   Class['mysql::server::config'] ->
+  Class['mysql::server::source'] ->
   Class['mysql::server::install'] ->
   Class['mysql::server::binarylog'] ->
   Class['mysql::server::installdb'] ->
