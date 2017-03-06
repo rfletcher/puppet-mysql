@@ -6,6 +6,7 @@ class mysql::server (
   $install_secret_file     = $mysql::params::install_secret_file,
   $manage_config_file      = $mysql::params::manage_config_file,
   $override_options        = {},
+  $db_manage               = $mysql::params::server_db_manage,
   $package_ensure          = $mysql::params::server_package_ensure,
   $package_manage          = $mysql::params::server_package_manage,
   $package_name            = $mysql::params::server_package_name,

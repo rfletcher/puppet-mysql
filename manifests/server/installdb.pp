@@ -2,7 +2,7 @@
 class mysql::server::installdb {
   $options = $mysql::server::options
 
-  if $mysql::server::package_manage {
+  if $mysql::server::db_manage {
 
     # Build the initial databases.
     $mysqluser = $mysql::server::options['mysqld']['user']

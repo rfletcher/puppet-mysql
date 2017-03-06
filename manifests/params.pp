@@ -6,6 +6,7 @@ class mysql::params {
   $restart                = false
   $root_password          = 'UNSET'
   $install_secret_file    = '/.mysql_secret'
+  $server_db_manage       = true
   $server_package_ensure  = 'present'
   $server_package_manage  = true
   $server_service_manage  = true
